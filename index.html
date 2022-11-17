@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+  <!-- Include meta tag to ensure proper rendering and touch zooming -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Include jQuery Mobile stylesheets -->
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <!-- Include the jQuery library -->
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <!-- Include the jQuery Mobile library -->
+  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+  <style>
+    
+    .container {
+
+        width: 60%;
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+
+    .grid-item {
+        width: 20em;
+    }
+    
+    
+
+  </style>
+
+
+
+</head>
+<body>
+
+<!-- BMI 頁面結構 -->
+<div id="page-bmi" data-role="page">
+ 
+    <!-- Header 頂部欄 -->
+    <div data-role="header">
+        <h1>BMI 計算器</h1>
+    </div>
+ 
+    <!-- 內容 -->
+    <div data-role="content">
+            <p>BMI 計算器</p>
+            
+                <label for="kg">請輸入體重 (公斤/KG)</label>
+                <input type="number" id="kg">
+                <label for="meter">請輸入身高 (米/m)</label>
+                <input type="number" id="meter">
+
+                <button id="btn">計算 BMI</button>
+
+                <label for="bmi">BMI 範圍</label>
+                <input id="bmi" type="range" min="1" max="100" value="50">
+            
+    </div>
+ 
+    <!-- Footer 底部欄 -->
+    <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#page-bmi" data-role="tab" data-icon="grid" class="ui-btn-active">Tab 1</a></li>
+                <li><a href="#page-foods" data-role="tab" data-icon="grid">Tab 2</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    
+<div id="page-foods" data-role="page">
+ 
+    <!-- Header 頂部欄 -->
+    <div data-role="header">
+        <h1>食物卡路里</h1>
+    </div>
+ 
+    <!-- 內容 -->
+    <div data-role="content">
+        <p>食物卡路里內容</p>
+        <div data-role="collapsible">
+            <h3>白粥</h3>
+            <div class="container">
+                  
+                    <div class="grid-item">熱量：</div><div class="grid-item">46 大卡 (100克)</div>
+                    <div class="grid-item">熱量(大卡)</div><div class="grid-item">46.00</div>
+                    <div class="grid-item">碳水化合物(克)</div><div class="grid-item">9.90</div>
+                    <div class="grid-item">脂肪(克)</div><div class="grid-item">0.30</div>
+                    <div class="grid-item">蛋白質(克)</div><div class="grid-item">1.10</div> 
+                    <div class="grid-item">纖維素(克)</div><div class="grid-item">0.10</div> 
+
+                
+           </div>
+        </div>
+        <div data-role="collapsible">
+            <h3>雞蛋</h3>
+            <div class="container">
+                
+                    <div class="grid-item">熱量：</div><div class="grid-item">144 大卡（100克可食部分）</div>
+                    <div class="grid-item">熱量(大卡)</div><div class="grid-item">144.00</div>
+                    <div class="grid-item">碳水化合物(克)</div><div class="grid-item">2.80</div>
+                    <div class="grid-item">脂肪(克)</div><div class="grid-item">8.80</div>
+                    <div class="grid-item">蛋白質(克)</div><div class="grid-item">13.30</div>
+                    <div class="grid-item">維生素A(微克)</div><div class="grid-item">234.00</div>
+
+                
+            </div>
+        </div>
+        <div data-role="collapsible">
+            <h3>豆漿</h3>
+            <div class="container">
+               
+                    <div class="grid-item">熱量：</div><div class="grid-item">31 大卡（100毫升</div>
+                    <div class="grid-item">熱量(大卡)</div><div class="grid-item">31.00</div>
+                    <div class="grid-item">碳水化合物(克)</div><div class="grid-item">1.20</div>
+                    <div class="grid-item">脂肪(克)</div><div class="grid-item">1.60</div>
+                    <div class="grid-item">蛋白質(克)</div><div class="grid-item">3.00</div>
+
+                
+            </div>
+        </div>
+    </div>
+ 
+    <!-- Footer 底部欄 -->
+    <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#page-bmi" data-role="tab" data-icon="grid">BMI 計算器</a></li>
+                <li><a href="#page-foods" data-role="tab" data-icon="grid" class="ui-btn-active">食物卡路里</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $("a[data-role=tab]").each(function () {
+        $(this).on("click", function () {
+            $.mobile.changePage($(this).attr("href"), {
+                transition: "none",
+                changeHash: false
+
+            });
+            return false;
+        });
+        
+    });
+
+    $("#btn").on('click', function(){
+        
+        let bmiNum = 0
+        bmiNum = $("#kg").val()/($("#meter").val()*$("#meter").val())
+
+        console.log(bmiNum)
+        $("#bmi").val(bmiNum)
+        $("#bmi").slider("refresh")
+        
+    });
+
+    
+
+    
+
+
+
+
+    
+</script>
+
+</body>
+</html>
