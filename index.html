@@ -36,18 +36,11 @@
       padding-bottom: 1.5em;
     }
 
-    #btn {
+    #btn{
         margin-top: 2em;
-        
     }
 
-    #note {
-        margin: 1em 0 1em;
-    }
-    
-    
-    
-    .containerSecond {
+   .containerSecond {
         margin: auto;
         width: 60%;
         display: grid;
@@ -92,12 +85,8 @@
                     <input id="bmi" type="range" min="1" max="100" value="1">
                 
 
-                <h2 id="note">Note:</h2>
-                <ul>
-                    <li>小於 18.5 屬於體重過輕</li>
-                    <li>18.5 至 24 屬於正常範圍</li>
-                    <li>超過 24 屬於過重</li>
-                </ul>
+               
+                
         </div>
     </div>
  
@@ -203,6 +192,14 @@
             
             $("#kg").val("")
             $("#meter").val("")
+
+            setTimeout(function() { alert(`Your BMI: ${parseInt(bmiNum)}  
+                                           小於 18.5 屬於體重過輕
+                                           18.5 至 24 屬於正常範圍
+                                           超過 24 屬於過重`); }, 1000);
+
+            
+            
   
          } else {
            alert("請輸入你的數據 (Please input your data first) ")
