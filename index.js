@@ -1,4 +1,7 @@
 
+   
+    $("#output").hide();
+
     $("a[data-role=tab]").each(function () {
         $(this).on("click", function () {
             $.mobile.changePage($(this).attr("href"), {
@@ -24,6 +27,8 @@
             
             $("#kg").val("")
             $("#meter").val("")
+
+            $("#output").show();
 
             setTimeout(function() { alert(`Your BMI: ${parseInt(bmiNum)}  
                                            小於 18.5 屬於體重過輕
