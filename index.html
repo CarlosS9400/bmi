@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alkalami&family=Inter:wght@400;600;700&family=Noto+Sans+TC&display=swap" rel="stylesheet">
   <!-- Include meta tag to ensure proper rendering and touch zooming -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Include jQuery Mobile stylesheets -->
@@ -12,9 +14,41 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
 
   <style>
+    *{
+      padding: 0;
+      margin: 0;
+    }  
+    body{
+      font-family: 'Alkalami', serif;
+      font-family: 'Inter', sans-serif;
+      font-family: 'Noto Sans TC', sans-serif;
+    }  
     
     .container {
+      width: 80%;
+      margin: auto;
+      
+    }
+    
+    label{
+     
+      padding-top: 1em;
+      padding-bottom: 1.5em;
+    }
 
+    #btn {
+        margin-top: 2em;
+        
+    }
+
+    #note {
+        margin: 1em 0 1em;
+    }
+    
+    
+    
+    .containerSecond {
+        margin: auto;
         width: 60%;
         display: grid;
         grid-template-columns: auto auto;
@@ -38,23 +72,33 @@
  
     <!-- Header 頂部欄 -->
     <div data-role="header">
-        <h1>BMI 計算器</h1>
+        <h1>BMI 計算器 (BMI Calculator)</h1>
     </div>
  
     <!-- 內容 -->
     <div data-role="content">
-            <p>BMI 計算器</p>
-            
-                <label for="kg">請輸入體重 (公斤/KG)</label>
-                <input type="number" id="kg">
-                <label for="meter">請輸入身高 (米/m)</label>
-                <input type="number" id="meter">
+        <div class="container">
+            <h2>BMI 計算器:</h2>
+                
+                    <label for="kg">請輸入體重 (公斤/KG)</label>
+                    <input type="number" id="kg">
+                    <label for="meter">請輸入身高 (米/m)</label>
+                    <input type="number" id="meter">
 
-                <button id="btn">計算 BMI</button>
+                    <button id="btn">計算 BMI (Calculate BMI)</button>
+                
 
-                <label for="bmi">BMI 範圍</label>
-                <input id="bmi" type="range" min="1" max="100" value="50">
-            
+                    <label for="bmi">BMI 範圍:</label>
+                    <input id="bmi" type="range" min="1" max="100" value="1">
+                
+
+                <h2 id="note">Note:</h2>
+                <ul>
+                    <li>小於 18.5 屬於體重過輕</li>
+                    <li>18.5 至 24 屬於正常範圍</li>
+                    <li>超過 24 屬於過重</li>
+                </ul>
+        </div>
     </div>
  
     <!-- Footer 底部欄 -->
@@ -80,9 +124,9 @@
     <div data-role="content">
         <p>食物卡路里內容</p>
         <div data-role="collapsible">
-            <h3>白粥</h3>
-            <div class="container">
-                  
+            <h2>白粥</h2>  
+            <div class="containerSecond">
+                     
                     <div class="grid-item">熱量：</div><div class="grid-item">46 大卡 (100克)</div>
                     <div class="grid-item">熱量(大卡)</div><div class="grid-item">46.00</div>
                     <div class="grid-item">碳水化合物(克)</div><div class="grid-item">9.90</div>
@@ -94,8 +138,8 @@
            </div>
         </div>
         <div data-role="collapsible">
-            <h3>雞蛋</h3>
-            <div class="container">
+            <h2>雞蛋</h2>
+            <div class="containerSecond">
                 
                     <div class="grid-item">熱量：</div><div class="grid-item">144 大卡（100克可食部分）</div>
                     <div class="grid-item">熱量(大卡)</div><div class="grid-item">144.00</div>
@@ -108,8 +152,8 @@
             </div>
         </div>
         <div data-role="collapsible">
-            <h3>豆漿</h3>
-            <div class="container">
+            <h2>豆漿</h2>
+            <div class="containerSecond">
                
                     <div class="grid-item">熱量：</div><div class="grid-item">31 大卡（100毫升</div>
                     <div class="grid-item">熱量(大卡)</div><div class="grid-item">31.00</div>
@@ -148,12 +192,21 @@
 
     $("#btn").on('click', function(){
         
-        let bmiNum = 0
-        bmiNum = $("#kg").val()/($("#meter").val()*$("#meter").val())
+        if($("#kg").val() && $("#meter").val()) {
+        
+            let bmiNum = 0
+            bmiNum = $("#kg").val()/($("#meter").val()*$("#meter").val())
 
-        console.log(bmiNum)
-        $("#bmi").val(bmiNum)
-        $("#bmi").slider("refresh")
+            //console.log(bmiNum)
+            $("#bmi").val(bmiNum)
+            $("#bmi").slider("refresh")
+            
+            $("#kg").val("")
+            $("#meter").val("")
+  
+         } else {
+           alert("請輸入你的數據 (Please input your data first) ")
+         }
         
     });
 
