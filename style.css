@@ -1,0 +1,37 @@
+
+    *{
+        padding: 0;
+        margin: 0;
+      }  
+      body{
+        font-family: 'Alkalami', serif;
+        font-family: 'Inter', sans-serif;
+        font-family: 'Noto Sans TC', sans-serif;
+      }  
+      
+      .container {
+        width: 80%;
+        margin: auto;
+        
+      }
+      
+      label{
+       
+        padding-top: 1em;
+        padding-bottom: 1.5em;
+      }
+  
+      #btn{
+          margin-top: 2em;
+      }
+  
+     .containerSecond {
+          
+          width: 60%;
+          display: grid;
+          grid-template-columns: auto auto;
+      }
+  
+      .grid-item {
+          width: 8em;
+      }
